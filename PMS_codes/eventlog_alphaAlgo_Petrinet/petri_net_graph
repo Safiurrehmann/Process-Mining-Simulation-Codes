@@ -1,0 +1,27 @@
+digraph PetriNet {
+	"p_end_handle payment" [fillcolor=lightgrey shape=circle style=filled]
+	"p_register order_check stock" [fillcolor=lightgrey shape=circle style=filled]
+	"p_register order_ship order" [fillcolor=lightgrey shape=circle style=filled]
+	"p_check stock_ship order" [fillcolor=lightgrey shape=circle style=filled]
+	"p_end_ship order" [fillcolor=lightgrey shape=circle style=filled]
+	"p_check stock_handle payment" [fillcolor=lightgrey shape=circle style=filled]
+	"p_ship order_handle payment" [fillcolor=lightgrey shape=circle style=filled]
+	"p_start_register order" [fillcolor=lightgrey shape=circle style=filled]
+	"check stock" [fillcolor=lightblue shape=box style=filled]
+	"ship order" [fillcolor=lightblue shape=box style=filled]
+	"handle payment" [fillcolor=lightblue shape=box style=filled]
+	"register order" [fillcolor=lightblue shape=box style=filled]
+	"register order" -> "p_register order_ship order"
+	"p_check stock_ship order" -> "ship order"
+	"register order" -> "p_register order_check stock"
+	"p_register order_ship order" -> "ship order"
+	"p_check stock_handle payment" -> "handle payment"
+	"p_register order_check stock" -> "check stock"
+	"p_start_register order" -> "register order"
+	"ship order" -> "p_ship order_handle payment"
+	"check stock" -> "p_check stock_handle payment"
+	"ship order" -> "p_end_ship order"
+	"handle payment" -> "p_end_handle payment"
+	"check stock" -> "p_check stock_ship order"
+	"p_ship order_handle payment" -> "handle payment"
+}

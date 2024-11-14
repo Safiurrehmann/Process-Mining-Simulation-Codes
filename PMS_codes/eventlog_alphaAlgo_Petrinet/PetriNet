@@ -1,0 +1,24 @@
+digraph PetriNet {
+	"register order" [shape=circle]
+	"check stock" [shape=circle]
+	"ship order" [shape=circle]
+	"handle payment" [shape=circle]
+	p_0 [shape=rectangle]
+	p_1 [shape=rectangle]
+	p_2 [shape=rectangle]
+	p_3 [shape=rectangle]
+	p_4 [shape=rectangle]
+	p_5 [shape=rectangle]
+	"p_register order_ship order" -> "ship order"
+	"check stock" -> "p_check stock_ship order"
+	"register order" -> "p_register order_ship order"
+	"ship order" -> "p_ship order_handle payment"
+	"p_ship order_handle payment" -> "handle payment"
+	"p_register order_handle payment" -> "handle payment"
+	"register order" -> "p_register order_handle payment"
+	"p_check stock_handle payment" -> "handle payment"
+	"p_check stock_ship order" -> "ship order"
+	"p_register order_check stock" -> "check stock"
+	"register order" -> "p_register order_check stock"
+	"check stock" -> "p_check stock_handle payment"
+}
